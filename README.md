@@ -58,10 +58,10 @@ Enjoy!
 
 # Jina Deployment (work in progress)
 
-Transform `Deployment` which uses a Jina custom Gateway to an ECS deployment running on EC2.
+Transform a `Deployment` which uses a Jina custom Gateway to an ECS deployment running on EC2.
 
 [JinaDeploymentStack](jina_aws/deployment/__init__.py)
-[Jina Deployment App](deployment.py)
+[Jina Deployment CDK App](deployment.py)
 
 Synthesize the CloudFormation template:
 
@@ -71,14 +71,28 @@ cdk synth --app ./deployment.py
 
 # Jina SageMaker (work in progress)
 
-Transform `Deployment` which uses a Jina custom Gateway to a SageMaker inference deployment that is exposed by an API
+Transform a `Deployment` which uses a Jina custom Gateway to a SageMaker inference deployment that is exposed by an API
 Gateway which triggers a lambda function on the inference endpoint.
 
 [JinaSageMakerStack](jina_aws/sagemaker/sagemaker_stack.py)
-[Jina SageMaker App](sagemaker.py)
+[Jina SageMaker CDK App](sagemaker.py)
 
 Synthesize the CloudFormation template:
 
 ```shell
 cdk synth --app ./sagemaker.py
+```
+
+# Jina Flow (work in progress)
+
+Transform a `Flow` to an ECS deployment running on EC2. Each Executor is mapped to a EC2 TaskDefinition with its own
+network load balancer.
+
+[JinaFlowStack](jina_aws/flow/__init__.py)
+[Jina Flow CDK App](flow.py)
+
+Synthesize the CloudFormation template:
+
+```shell
+cdk synth --app ./flow.py
 ```
