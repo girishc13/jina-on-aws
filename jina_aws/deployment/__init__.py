@@ -10,17 +10,21 @@ from aws_cdk import (
     aws_ecs_patterns as ecs_patterns,
 )
 from constructs import Construct
-from jina import Deployment
+from jina import Deployment as JinaDeployment
 from jina.helper import ArgNamespace
 from jina.parsers import set_gateway_parser
 from jina.serve.networking import GrpcConnectionPool
+
+"""
+The Jina custom Gateway from a Jina Deployment is mapped to a ECS Container running on EC2 instances.
+"""
 
 
 class JinaDeploymentStack(Stack):
     def __init__(self,
                  scope: Construct,
                  id: str,
-                 jina_deployment: Deployment,
+                 jina_deployment: JinaDeployment,
                  cluster_name: str = 'MyCluster',
                  **kwargs
                  ) -> None:
